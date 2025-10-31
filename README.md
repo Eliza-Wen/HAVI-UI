@@ -14,3 +14,19 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Medical Chat Frontend
+
+A React + Vite frontend for a modular medical chatbot platform.
+
+## Features
+
+- Fast Vite-based setup  
+- Modular UI components  
+- Ready for OpenEvidence integration  
+- Designed for patient empowerment  
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
