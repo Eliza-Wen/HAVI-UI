@@ -1,0 +1,1 @@
+import{j as e}from"./index-fVMN3TVY.js";function t(){return e.jsxs("div",{children:[e.jsx("h3",{children:"AI Assessment (Prototype)"}),e.jsx("p",{children:"This module is lazy-loaded for better initial performance. Replace with real AI integration later."})]})}export{t as default};
