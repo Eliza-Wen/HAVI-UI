@@ -1,0 +1,1 @@
+import{u as t,j as s}from"./index-B2ylxjDB.js";function r(){const{t:e}=t();return s.jsxs("div",{children:[s.jsx("h3",{children:e("assessment.title")}),s.jsx("p",{children:e("assessment.desc")})]})}export{r as default};
