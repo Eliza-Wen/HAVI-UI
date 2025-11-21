@@ -43,9 +43,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right column: AI Triage */}
+        {/* Right column: AI-driven treatment decision */}
           <div className="section">
-            <h2>AI Symptom Triage</h2>
+            <h2>AI-driven Treatment Decision</h2>
             <Triage />
           </div>
       </div>

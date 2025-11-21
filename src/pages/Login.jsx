@@ -1,54 +1,47 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../auth/AuthProvider';
+import { useTranslation } from '../i18n/TranslationProvider';
 
 export default function Login() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-  const auth = useAuth();
-  const navigate = useNavigate();
 
-  const submit = async (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
+    // Lightweight local auth stub: store a token and redirect to home
     try {
-      await auth.signIn({ email, password });
-      navigate('/', { replace: true });
-    } catch (err) {
-      setError('Sign in failed');
-    }
-  };
+      localStorage.setItem('auth_token', email || 'user');
+    } catch (err) {}
+    window.location.href = '/';
+  }
 
   return (
-    <main style={{ maxWidth: 480, margin: '3rem auto', padding: '1rem' }}>
-      <h2>Sign in to HAVI</h2>
-      <form onSubmit={submit}>
-        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-          Email
-          <input
-            required
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
-          />
-        </label>
+    <main className="app-main" role="main">
+      <section className="hero">
+        <div className="hero-inner">
+          <h1 className="hero-title">{t('login.signIn')}</h1>
+          <p className="hero-sub">Sign in to access personalized features.</p>
+        </div>
+      </section>
 
-        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-          Password
-          <input
-            required
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
-          />
-        </label>
+      <div className="site-container">
+        <div className="page-inner">
+          <div className="card" style={{ maxWidth: 560, margin: '1rem auto', padding: '1.25rem' }}>
+            <form onSubmit={handleSubmit}>
+              <label style={{ display: 'block', marginBottom: 6 }}>{t('login.email')}</label>
+              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required style={{ width: '100%', padding: '0.5rem', marginBottom: '0.75rem' }} />
 
-        {error && <div style={{ color: 'crimson' }}>{error}</div>}
+              <label style={{ display: 'block', marginBottom: 6 }}>{t('login.password')}</label>
+              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" required style={{ width: '100%', padding: '0.5rem', marginBottom: '0.75rem' }} />
 
-        <button type="submit" style={{ marginTop: '1rem', padding: '0.6rem 1rem' }}>Sign in</button>
-      </form>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <button type="submit" className="btn-primary">{t('login.signIn')}</button>
+                <a href="/signup" style={{ color: '#0366d6' }}>{t('login.signUp')}</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
